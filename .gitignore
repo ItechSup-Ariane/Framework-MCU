@@ -45,3 +45,7 @@ Temporary Items
 #Ignore les fichiers de config netbeans
 
 nbproject/
+
+#Ignore les librairies
+
+Librairies/

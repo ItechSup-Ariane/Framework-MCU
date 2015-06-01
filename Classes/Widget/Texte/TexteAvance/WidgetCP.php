@@ -17,17 +17,6 @@ class WidgetCP extends WidgetTexte {
         $this->texte='';
     }
     
-    public function addContent(){
-        $objPHPExcel = PHPExcel_IOFactory::load("../Librairies/insee.xlsx");
-        $sheet = $objPHPExcel->getSheet(0);
-        foreach($sheet->getRowIterator() as $row) {
- 
-        foreach ($row->getCellByColumn() as $cell) {
-      
-            print_r($cell->getValue());
-            }
-        }
-    }
     
     public function render(){
         

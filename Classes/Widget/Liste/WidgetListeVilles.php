@@ -14,6 +14,7 @@ class WidgetListeVilles extends WidgetComboBox {
     
     public function __construct($name,$label,$tab='',$messageErreur=''){
         parent::__construct($name,$label,$tab,$messageErreur);
+        $this->tab=array();
     }
     
     public function addContent(){

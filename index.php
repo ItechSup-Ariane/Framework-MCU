@@ -40,6 +40,8 @@ and open the template in the editor.
                 require $file;
             }
         });
+        
+        
     ?>
         
         <form name='formulaireSimple' method='POST' action=''>
@@ -67,7 +69,7 @@ and open the template in the editor.
                 $formulaire->addWidget($widgetCP = new WTA\WidgetCP('CP','CP'));
                 
                 $widgetVille = new WL\WidgetListeVilles('Ville','Ville');
-                $widgetVille->addContent();
+                //$widgetVille->addContent();
                 $formulaire->addWidget($widgetVille);
                 
 
