@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 namespace ItechSup\Validator\Format;
 
 /**
@@ -12,16 +13,21 @@ namespace ItechSup\Validator\Format;
  *
  * @author Maxime
  */
-class DateFormatValidator {
+class DateFormatValidator
+{
 
-
-public function testFormat($chaine){
-    if (preg_match("#[0-9]{2}+/[0-9]{2}+/[0-9]{4}$#", $chaine)){
-        return true;
-    }
-    else
+    /**
+     * Test si le format respecte les normes (jj/mm/aaaa)
+     * @param string $chaine
+     * @return boolean
+     */
+    public function testFormat($chaine)
     {
-        return false;
+        if (preg_match("#[0-9]{2}+/[0-9]{2}+/[0-9]{4}$#", $chaine)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
 }

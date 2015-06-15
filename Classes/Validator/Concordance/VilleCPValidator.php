@@ -11,6 +11,7 @@
  *
  * @author Maxime
  */
-class VilleCPValidator {
+class VilleCPValidator
+{
     //put your code here
 }

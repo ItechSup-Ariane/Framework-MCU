@@ -13,15 +13,22 @@ namespace ItechSup\Validator\Concordance;
  *
  * @author Maxime
  */
-class TexteIdentiqueValidator {
+class TexteIdentiqueValidator
+{
 
-public function testConcordance($chaine,$chaine2){
-    if ($chaine==$chaine2){
-        return true;
-    }
-    else
+    /**
+     * Test si les deux chaînes sont identiques
+     * @param string $chaine
+     * @param string $chaine2
+     * @return boolean
+     */
+    public function testConcordance($chaine, $chaine2)
     {
-        return false;
+        if ($chaine == $chaine2) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
 }

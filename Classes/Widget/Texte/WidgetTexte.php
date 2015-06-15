@@ -16,32 +16,51 @@ use ItechSup\Widget\Widget;
  * @author Maxime
  */
 //include 'Classes/Widget/Widget.php';
-class WidgetTexte extends Widget{
-    
+class WidgetTexte extends Widget
+{
+
     protected $texte;
-    
-    public function __construct($name,$label,$messageErreur=''){
-        parent::__construct($name,$label,$messageErreur);
-        $this->texte='';
+
+    protected function __construct($name, $label, $messageErreur = '')
+    {
+        parent::__construct($name, $label, $messageErreur);
+        $this->texte = '';
     }
-    
-    public function render(){
-        $value = "<tr><td><label>".$this->label."</label></td><td><input type='text' name='".$this->name."' value='".$this->texte."' /></td></tr>";
-        if($this->messageErreur!=''){            
-            $value .= "<tr><td COLSPAN='2'><span class='warning'>".$this->messageErreur."</span></td></tr>";
+
+    /**
+     * Fonction qui permet de créer l'affichage de notre Widget
+     * On retourne un string comportant le code HTML permettant de 
+     * créer un champ de saisie de texte.
+     * @return string
+     */
+    public function render()
+    {
+        $value = "<tr><td><label>" . $this->label . "</label></td>"
+            . "<td><input type='text' name='" . $this->name . "' value='"
+            . $this->texte . "' /></td></tr>";
+        if ($this->messageErreur != '') {
+            $value .= "<tr><td COLSPAN='2'><span class='warning'>"
+                . $this->messageErreur . "</span></td></tr>";
         }
         return $value;
     }
-    
-    public function isValid(){
-        
-    }
-    
-    function getTexte() {
+
+    /**
+     * Accesseur de la variable texte
+     * @return string
+     */
+    function getTexte()
+    {
         return $this->texte;
     }
 
-    function setTexte($texte) {
+    /**
+     * Mutateur pour la variable texte
+     * @param string $texte
+     */
+    function setTexte($texte)
+    {
         $this->texte = $texte;
     }
+
 }

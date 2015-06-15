@@ -13,14 +13,22 @@ namespace ItechSup\Validator\Format;
  *
  * @author Maxime
  */
-class PasswordFormatValidator {
-    public function testFormat($chaine){
-    if (preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $chaine)){
-        return true;
-    }
-    else
+class PasswordFormatValidator
+{
+
+    /**
+     * Test si le format respecte les normes (nombre de caractères,
+     * avec caractères spéciaux, avec chiffre etc.) 
+     * @param string $chaine
+     * @return boolean
+     */
+    public function testFormat($chaine)
     {
-        return false;
+        if (preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $chaine)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
 }

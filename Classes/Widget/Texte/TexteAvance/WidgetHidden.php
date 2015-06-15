@@ -11,11 +11,11 @@ namespace ItechSup\Widget\Texte\TexteAvance;
 use ItechSup\Widget\Texte\WidgetTexte;
 
 /**
- * Description of WidgetUrl
+ * Description of WidgetHidden
  *
  * @author Maxime
  */
-class WidgetUrl extends WidgetTexte
+class WidgetHidden extends WidgetTexte
 {
 
     private function __construct($name, $label, $messageErreur = '')
@@ -27,14 +27,19 @@ class WidgetUrl extends WidgetTexte
     /**
      * Fonction qui permet de créer l'affichage de notre Widget
      * On retourne un string comportant le code HTML permettant de 
-     * créer un champ de saisie de mot de passe.
+     * créer un champ de saisie de texte invisible.
      * @return string
      */
     public function render()
     {
-        $value = "<tr><td><label>" . $this->label . "</label></td><td><input type='url' name='" . $this->name . "' value='" . $this->texte . "' /></td></tr>";
+
+        $value = "<tr><td><label>" . $this->label . "</label></td>"
+            . "<td><input type='hidden' name='" . $this->name
+            . "' value='" . $this->texte . "' /></td></tr>";
+
         if ($this->messageErreur != '') {
-            $value .= "<tr><td COLSPAN='2'><span class='warning'>" . $this->messageErreur . "</span></td></tr>";
+            $value .= "<tr><td COLSPAN='2'><span class='warning'>"
+                . $this->messageErreur . "</span></td></tr>";
         }
         return $value;
     }

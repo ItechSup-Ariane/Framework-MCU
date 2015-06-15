@@ -13,14 +13,21 @@ namespace ItechSup\Validator\Format;
  *
  * @author Maxime
  */
-class UrlFormatValidator {
-    public function testFormat($chaine){
-    if (preg_match("##", $chaine)){
-        return true;
-    }
-    else
+class UrlFormatValidator
+{
+
+    /**
+     * Test si le format respecte les normes (...)
+     * @param string $chaine
+     * @return boolean
+     */
+    public function testFormat($chaine)
     {
-        return false;
+        if (preg_match("##", $chaine)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
 }

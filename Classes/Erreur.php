@@ -13,6 +13,7 @@ namespace ItechSup;
  *
  * @author Maxime
  */
-class Erreur {
+class Erreur
+{
     //put your code here
 }

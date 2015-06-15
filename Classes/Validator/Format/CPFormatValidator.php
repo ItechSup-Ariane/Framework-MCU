@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 namespace ItechSup\Validator\Format;
 
 /**
@@ -12,16 +13,21 @@ namespace ItechSup\Validator\Format;
  *
  * @author Maxime
  */
-class CPFormatValidator {
+class CPFormatValidator
+{
 
-
-public function testFormat($chaine){
-    if (preg_match("#[0-9]{5}#", $chaine)){
-        return true;
-    }
-    else
+    /**
+     * Test si le code postal correspond aux normes (5 chiffres)
+     * @param string $chaine
+     * @return boolean
+     */
+    public function testFormat($chaine)
     {
-        return false;
+        if (preg_match("#[0-9]{5}#", $chaine)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
 }

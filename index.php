@@ -11,79 +11,90 @@ and open the template in the editor.
         <link href="css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-    <?php    
+        <?php
         spl_autoload_register(function ($class) {
 
             // project-specific namespace prefix
             $prefix = 'ItechSup';
 
             // base directory for the namespace prefix
-            $base_dir = __DIR__.'/Classes' ;
+            $base_dir = __DIR__ . '/Classes';
 
             // does the class use the namespace prefix?
             $len = strlen($prefix);
-               if (strncmp($prefix, $class, $len) !== 0) {
-            // no, move to the next registered autoloader
+            if (strncmp($prefix, $class, $len) !== 0) {
+                // no, move to the next registered autoloader
                 return;
             }
 
-        // get the relative class name
+            // get the relative class name
             $relative_class = substr($class, $len);
 
-        // replace the namespace prefix with the base directory, replace namespace
-        // separators with directory separators in the relative class name, append
-        // with .php
+            // replace the namespace prefix with the base directory, replace namespace
+            // separators with directory separators in the relative class name, append
+            // with .php
             $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
 
-        // if the file exists, require it
+            // if the file exists, require it
             if (file_exists($file)) {
                 require $file;
             }
         });
-        
-        
-    ?>
-        
+        ?>
+
         <form name='formulaireSimple' method='POST' action=''>
             <?PHP
-                use ItechSup\Formulaire;
-                use ItechSup\Widget\Texte as WT;
-                use ItechSup\Widget\Texte\TexteAvance as WTA;
-                use ItechSup\Widget\Liste as WL;
-                use ItechSup\Widget\Choix as WC;
-                
-                $formulaire = new Formulaire('Premier Formulaire');
 
-                $formulaire->addWidget($widgetTexte = new WT\WidgetTexte('Test','Texte'));
+            use ItechSup\Formulaire;
+            use ItechSup\Widget\Texte as WT;
+            use ItechSup\Widget\Texte\TexteAvance as WTA;
+            use ItechSup\Widget\Liste as WL;
+            use ItechSup\Widget\Liste\ComboBoxAvance as WLA;
 
-                $formulaire->addWidget($widgetTel = new WTA\WidgetTel('Tel','Tel'));      
+//use ItechSup\Widget\Choix as WC;
 
-                $formulaire->addWidget($widgetURL = new WTA\WidgetURL('URL','URL'));
+            $formulaire = new Formulaire('Premier Formulaire');
 
-                $formulaire->addWidget($widgetDate = new WTA\WidgetDate('Date','Date'));   
+            $formulaire->addWidget($widgetTexte = new WT\WidgetTexte('Test', 'Texte'));
 
-                $formulaire->addWidget($widgetMail = new WTA\WidgetMail('Mail','Mail'));
+            $formulaire->addWidget($widgetTel = new WTA\WidgetTel('Tel', 'Tel'));
 
-                $formulaire->addWidget($widgetAdresse = new WT\WidgetTexte('Adresse','Adresse'));
+            $formulaire->addWidget($widgetURL = new WTA\WidgetURL('URL', 'URL'));
 
-                $formulaire->addWidget($widgetCP = new WTA\WidgetCP('CP','CP'));
-                
-                $widgetVille = new WL\WidgetListeVilles('Ville','Ville');
-                //$widgetVille->addContent();
-                $formulaire->addWidget($widgetVille);
-                
+            $formulaire->addWidget($widgetDate = new WTA\WidgetDate('Date', 'Date'));
 
-                $formulaire->addWidget($widgetPassword = new WTA\WidgetPassword('Password','Password'));
+            $formulaire->addWidget($widgetMail = new WTA\WidgetMail('Mail', 'Mail'));
 
-                $formulaire->addWidget($widgetPasswordConfirm = new WTA\WidgetPassword('PasswordConfirm','PasswordConfirm',$widgetPassword));
-                
-                if(sizeof($_POST)>0){
-                    $formulaire->bind($_POST);
-                    $formulaire->isValid();
+            $formulaire->addWidget($widgetAdresse = new WT\WidgetTexte('Adresse', 'Adresse'));
+
+            $formulaire->addWidget($widgetCP = new WTA\WidgetCP('CP', 'CP'));
+
+            $tab = array('1', '2', '3', '4', '5');
+            $formulaire->addWidget(new WLA\WidgetComboBoxLarge('Combo1', 'Combo1', $tab));
+
+            $formulaire->addWidget(new WLA\WidgetListeCheckBox('ListeCheck1', 'ListeCheck1', $tab));
+
+            $formulaire->addWidget(new WLA\WidgetListeRadio('ListeRadio1', 'ListeRadio1', $tab));
+
+            $formulaire->addWidget(new WL\WidgetComboBox('Combo2', 'Combo2', $tab));
+//                $widgetVille = new WL\WidgetListeVilles('Ville','Ville');
+//                //$widgetVille->addContent();
+//                $formulaire->addWidget($widgetVille);
+
+            $formulaire->addWidget($widgetPassword = new WTA\WidgetPassword('Password', 'Password'));
+
+            $formulaire->addWidget($widgetPasswordConfirm = new WTA\WidgetPassword('PasswordConfirm', 'PasswordConfirm', $widgetPassword));
+
+            var_dump($_POST);
+            if (sizeof($_POST) > 0) {
+                $formulaire->bind($_POST);
+
+                if ($formulaire->isValid()) {
+                    
                 }
-                
-                echo $formulaire->afficherWidgets();
+            }
 
+            echo $formulaire->afficherWidgets();
             ?>
             <input type='submit' value='Envoyer'>
         </form>

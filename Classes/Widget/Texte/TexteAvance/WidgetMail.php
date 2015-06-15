@@ -10,39 +10,68 @@ namespace ItechSup\Widget\Texte\TexteAvance;
 
 use ItechSup\Widget\Texte\WidgetTexte;
 use ItechSup\Validator\Format as VF;
+
 /**
  * Description of WidgetMail
  *
  * @author Maxime
  */
+class WidgetMail extends WidgetTexte
+{
 
-class WidgetMail extends WidgetTexte {
     private $validatorFormatMail;
-    public function __construct($name,$label,$messageErreur=''){
-        parent::__construct($name,$label,$messageErreur);
-        $this->texte='';
+
+    private function __construct($name, $label, $messageErreur = '')
+    {
+        parent::__construct($name, $label, $messageErreur);
+        $this->texte = '';
         $this->validatorFormatMail = new VF\MailFormatValidator();
     }
-    
-    public function formatTest(){
-        if(!$this->validatorFormatMail->testFormat($this->texte)){
-            
-            $this->messageErreur='Adresse mail invalide!';
+
+    /**
+     * Création d'un validateur ValidatorFormatMail 
+     * qui servira a tester si le format de l'adresse mail est conforme
+     * @return boolean
+     */
+    public function formatTest()
+    {
+        if (!$this->validatorFormatMail->testFormat($this->texte)) {
+            $this->messageErreur = 'Adresse mail invalide!';
+            return false;
+        } else {
+            return true;
         }
     }
-    
-    public function render(){
-        
-        $value = "<tr><td><label>".$this->label."</label></td><td><input type='email' name='".$this->name."' value='".$this->texte."' /></td></tr>";
-        
-        if($this->messageErreur!=''){            
-            $value .= "<tr><td COLSPAN='2'><span class='warning'>".$this->messageErreur."</span></td></tr>";
+
+    /**
+     * Fonction qui permet de créer l'affichage de notre Widget
+     * On retourne un string comportant le code HTML permettant de 
+     * créer un champ de saisie de mail.
+     * @return string
+     */
+    public function render()
+    {
+
+        $value = "<tr><td><label>" . $this->label . "</label></td>"
+            . "<td><input type='email' name='" . $this->name
+            . "' value='" . $this->texte . "' /></td></tr>";
+
+        if ($this->messageErreur != '') {
+            $value .= "<tr><td COLSPAN='2'><span class='warning'>"
+                . $this->messageErreur . "</span></td></tr>";
         }
-        
         return $value;
     }
-    
-    public function isValid(){
-        $this->formatTest();
+
+    /**
+     * Fonction de validation du widget, 
+     * ici elle appelera la fonction formatTest 
+     * qui test le format de l'adresse mail donnée. 
+     * @return boolean
+     */
+    public function isValid()
+    {
+        return $this->formatTest();
     }
+
 }

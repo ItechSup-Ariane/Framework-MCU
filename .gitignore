@@ -49,3 +49,11 @@ nbproject/
 #Ignore les librairies
 
 Librairies/
+
+#Ignore la totalité de la documentation 
+
+Documentation/
+
+#Ignore la totalité du dossier vendor
+
+vendor/

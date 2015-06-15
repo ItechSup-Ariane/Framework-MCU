@@ -13,16 +13,22 @@ namespace ItechSup\Validator\Format;
  *
  * @author Maxime
  */
-class MailFormatValidator {
+class MailFormatValidator
+{
 
-
-public function testFormat($chaine){
-    if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,}$#", $chaine)){
-        return true;
-    }
-    else
+    /**
+     * Test si le format respecte les normes (caractères spéciaux,
+     * nombre de caractères avant et après arobase) 
+     * @param string $chaine
+     * @return boolean
+     */
+    public function testFormat($chaine)
     {
-        return false;
+        if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,}$#", $chaine)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
 }
