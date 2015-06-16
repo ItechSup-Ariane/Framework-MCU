@@ -20,7 +20,7 @@ class WidgetCheckBox extends Widget
 
     private $listeChoix = array();
 
-    private function __construct($name, $label, $liste, $messageErreur = '')
+    public function __construct($name, $label, $liste, $messageErreur = '')
     {
         parent::__construct($name, $label, $messageErreur);
         $this->listeChoix = $liste;

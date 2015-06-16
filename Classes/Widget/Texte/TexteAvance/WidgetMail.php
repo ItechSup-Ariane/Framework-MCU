@@ -21,7 +21,7 @@ class WidgetMail extends WidgetTexte
 
     private $validatorFormatMail;
 
-    private function __construct($name, $label, $messageErreur = '')
+    public function __construct($name, $label, $messageErreur = '')
     {
         parent::__construct($name, $label, $messageErreur);
         $this->texte = '';

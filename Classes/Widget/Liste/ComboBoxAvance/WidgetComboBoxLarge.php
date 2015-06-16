@@ -14,7 +14,7 @@ use ItechSup\Widget\Liste\WidgetComboBox;
 class WidgetComboBoxLarge extends WidgetComboBox
 {
 
-    private function __construct($name, $label, $tab, $messageErreur = '')
+    public function __construct($name, $label, $tab, $messageErreur = '')
     {
         parent::__construct($name, $label, $tab, $messageErreur);
     }

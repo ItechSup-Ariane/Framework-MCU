@@ -16,7 +16,7 @@ class WidgetDate extends WidgetTexte
 
     private $validatorFormatDate;
 
-    private function __construct($name, $label, $messageErreur = '')
+    public function __construct($name, $label, $messageErreur = '')
     {
         parent::__construct($name, $label, $messageErreur);
         $this->texte = '';

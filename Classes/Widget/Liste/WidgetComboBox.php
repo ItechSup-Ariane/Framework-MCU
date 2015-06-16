@@ -14,7 +14,7 @@ class WidgetComboBox extends Widget
 
     protected $tab = array();
 
-    protected function __construct($name, $label, $tab, $messageErreur = '')
+    public function __construct($name, $label, $tab, $messageErreur = '')
     {
         parent::__construct($name, $label, $messageErreur);
         $this->tab = $tab;

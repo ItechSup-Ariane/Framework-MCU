@@ -24,7 +24,7 @@ class WidgetPassword extends WidgetTexte
     private $identiquePasswordValidator;
     private $formatPasswordValidator;
 
-    private function __construct($name, $label, $widgetCopie = 'null', $messageErreur = '')
+    public function __construct($name, $label, $widgetCopie = 'null', $messageErreur = '')
     {
         parent::__construct($name, $label, $messageErreur);
         $this->texte = '';

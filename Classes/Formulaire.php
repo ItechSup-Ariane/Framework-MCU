@@ -19,7 +19,7 @@ class Formulaire
     private $name;
     private $listeWidget;
 
-    private function __construct($name)
+    public function __construct($name)
     {
         $this->name = $name;
         $this->listeWidget = array();

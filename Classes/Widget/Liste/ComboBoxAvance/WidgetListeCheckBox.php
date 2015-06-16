@@ -18,7 +18,7 @@ use ItechSup\Widget\Liste\WidgetComboBox;
 class WidgetListeCheckBox extends WidgetComboBox
 {
 
-    private function __construct($name, $label, $tab, $messageErreur = '')
+    public function __construct($name, $label, $tab, $messageErreur = '')
     {
         parent::__construct($name, $label, $tab, $messageErreur);
     }
@@ -64,7 +64,6 @@ class WidgetListeCheckBox extends WidgetComboBox
         foreach ($this->tab as $c) {
             //Les cases cochées sont définies comme des array, 
             //on teste donc si $c est un array ou un string, et s'il est true
-            var_dump($c);
             if ((is_array($c) && ($c[1] = true))) {
                 //Si c'est un array, on coche la case 
                 $value.= '<li><input type=\'checkbox\' name=' . $this->name .

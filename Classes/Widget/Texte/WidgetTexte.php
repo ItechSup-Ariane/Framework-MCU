@@ -21,7 +21,7 @@ class WidgetTexte extends Widget
 
     protected $texte;
 
-    protected function __construct($name, $label, $messageErreur = '')
+    public function __construct($name, $label, $messageErreur = '')
     {
         parent::__construct($name, $label, $messageErreur);
         $this->texte = '';
